@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaStar, FaCodeBranch, FaTimes } from 'react-icons/fa';
 import {
   SiReact,
@@ -132,11 +133,13 @@ const Projects = () => {
           <li key={index} className="bg-gray-800 p-4 rounded-lg shadow-md">
             <div className='flex justify-between'>
               <Link href={project.live} target="_blank" className="flex items-center gap-3">
-                <img
+                <Image
                   src={!project.logo ? '/vercel.svg' : project.logo}
                   alt={`${project.title} Logo`}
-                  width={20}
-                  height={20}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded object-contain"
+                  unoptimized
                 />
                 <h3 className="text-lg font-bold mb-2">{project.title}</h3>
               </Link>

@@ -19,7 +19,7 @@ const About = () => {
         <div className="flex-1">
           <h2 className="text-xl font-semibold">Who am I?</h2>
           <p className="mt-2 text-slate-300">
-            I'm Ved, a MERN-focused developer who enjoys building clean UIs and robust APIs. I love
+            I&apos;m Ved, a MERN-focused developer who enjoys building clean UIs and robust APIs. I love
             shipping features end-to-end—designing responsive interfaces, crafting REST endpoints,
             and modeling data for reliability and performance.
           </p>

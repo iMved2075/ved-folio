@@ -12,7 +12,7 @@ const Hero = () => {
           <span className='text-2xl font-bold flex items-center gap-2'><FiGlobe /> <Typewriter words={['HELLO WORLD']} loop={1} cursor cursorStyle='!' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} /></span>
           <hr className='text-emerald-500'/>
           <div className='text-4xl py-8'>
-            <Typewriter words={['Hey! I\'m Vedprakash 👋']} loop={1} cursor cursorStyle='.' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
+            <Typewriter words={["Hey! I'm Vedprakash 👋"]} loop={1} cursor cursorStyle='.' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
           </div>
           <Typewriter words={['I love coding', 'I am a fullstack web developer']} loop={0} cursor cursorStyle='.' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
           <div className='pt-5'>Welcome to my portfolio website!</div>
@@ -22,7 +22,7 @@ const Hero = () => {
             </div>
             <div className='w-[30%] bg-white/10 backdrop-blur-md p-5 rounded-lg'>
               <span>Feel free to explore my projects and skills showcased here.</span>
-              <span>Let's connect and create something amazing together!</span>
+              <span>Let&apos;s connect and create something amazing together!</span>
             </div>
           </div>
         </div>
