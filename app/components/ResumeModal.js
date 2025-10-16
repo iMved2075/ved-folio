@@ -50,7 +50,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-sm p-2 sm:p-4"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -61,20 +61,21 @@ const ResumeModal = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex justify-between items-center p-4 border-b border-gray-800 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
-          <div className="flex items-center gap-3">
-            <FaFilePdf className="text-red-500 text-2xl" />
+        <div className="flex justify-between items-center p-3 sm:p-4 border-b border-gray-800 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <FaFilePdf className="text-red-500 text-lg sm:text-2xl" />
             <div>
-              <h3 id="resume-modal-title" className="text-xl font-bold">Resume</h3>
-              <p className="text-sm text-slate-400">View or download my resume</p>
+              <h3 id="resume-modal-title" className="text-base sm:text-xl font-bold">Resume</h3>
+              <p className="text-xs sm:text-sm text-slate-400 hidden sm:block">View or download my resume</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-lg"
+            className="text-gray-400 hover:text-white transition-colors p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg"
             aria-label="Close modal"
           >
-            <FaTimes size={24} />
+            <FaTimes size={20} className="sm:hidden" />
+            <FaTimes size={24} className="hidden sm:block" />
           </button>
         </div>
 
@@ -82,32 +83,33 @@ const ResumeModal = ({ isOpen, onClose }) => {
         <div className="flex-1 overflow-auto bg-gray-800">
           <iframe
             src="/Resume.pdf"
-            className="w-full h-full min-h-[70vh]"
+            className="w-full h-full min-h-[60vh] sm:min-h-[70vh]"
             title="Resume PDF"
           />
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-gray-800 bg-gray-800/50 flex justify-between items-center flex-wrap gap-3">
-          <div className="flex gap-3">
+        <div className="p-3 sm:p-4 border-t border-gray-800 bg-gray-800/50 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={handleDownload}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+              className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium text-sm"
             >
               <FaDownload size={14} />
-              Download Resume
+              <span className="sm:inline">Download</span>
             </button>
             <button
               onClick={handleOpenNewTab}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+              className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm"
             >
               <FaExternalLinkAlt size={14} />
-              Open in New Tab
+              <span className="hidden sm:inline">Open in New Tab</span>
+              <span className="sm:hidden">Open</span>
             </button>
           </div>
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+            className="px-4 sm:px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm"
           >
             Close
           </button>
