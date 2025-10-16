@@ -11,7 +11,7 @@
 }
 
 .light {
-  --background: #ffffff;
+  --background: #f0fdf4; /* fallback color - very light green */
   --foreground: #000000;
   --accent: #22c55e; /* green */
   --border: #e5e7eb;
@@ -50,8 +50,19 @@
 body {
   accent-color: var(--color-accent);
   color: var(--color-foreground);
+  transition: color 200ms ease, background-color 200ms ease, background-image 200ms ease;
+}
+
+/* Light theme gradient background */
+.light body {
+  background: linear-gradient(135deg, #d1fae5 0%, #a5f3fc 50%, #ffffff 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Dark theme solid background */
+.dark body {
   background-color: var(--color-background);
-  transition: color 200ms ease, background-color 200ms ease;
 }
 
 /* Smooth theme transitions across UI when switching */
