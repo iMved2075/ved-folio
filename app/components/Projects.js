@@ -227,50 +227,51 @@ const Projects = () => {
       {/* Modal */}
       {showModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-75 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-75 backdrop-blur-sm p-2 sm:p-4"
           onClick={handleBackdropClick}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
         >
           <div
-            className="bg-gray-900 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl"
+            className="bg-gray-900 rounded-lg w-full max-w-full sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl max-h-[95vh] overflow-hidden flex flex-col shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h2 id="modal-title" className="text-2xl font-bold">All GitHub Projects</h2>
+            <div className="flex justify-between items-center p-3 sm:p-4 lg:p-6 border-b border-gray-800">
+              <h2 id="modal-title" className="text-lg sm:text-xl lg:text-2xl font-bold">All GitHub Projects</h2>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors p-1"
                 aria-label="Close modal"
               >
-                <FaTimes size={24} />
+                <FaTimes size={20} className="sm:hidden" />
+                <FaTimes size={24} className="hidden sm:block" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6">
               {loading ? (
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {[...Array(5)].map((_, i) => (
-                    <div key={i} className="border border-slate-800 rounded-lg p-4 animate-pulse">
-                      <div className="h-6 w-48 bg-slate-700 rounded mb-3"></div>
-                      <div className="h-4 w-full bg-slate-700 rounded mb-2"></div>
-                      <div className="h-4 w-3/4 bg-slate-700 rounded"></div>
+                    <div key={i} className="border border-slate-800 rounded-lg p-3 sm:p-4 animate-pulse">
+                      <div className="h-5 sm:h-6 w-32 sm:w-48 bg-slate-700 rounded mb-2 sm:mb-3"></div>
+                      <div className="h-3 sm:h-4 w-full bg-slate-700 rounded mb-2"></div>
+                      <div className="h-3 sm:h-4 w-3/4 bg-slate-700 rounded"></div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {allProjects.length > 0 ? (
                     allProjects.map((project) => (
                       <div
                         key={project.id}
-                        className="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors bg-gray-800"
+                        className="border border-slate-800 rounded-lg p-3 sm:p-4 hover:border-slate-700 transition-colors bg-gray-800"
                       >
-                        <div className="flex justify-between items-start mb-3">
-                          <h3 className="text-lg font-bold">
+                        <div className="flex flex-col sm:flex-row justify-between items-start mb-2 sm:mb-3 gap-2">
+                          <h3 className="text-base sm:text-lg font-bold">
                             <a
                               href={project.url}
                               target="_blank"
@@ -280,30 +281,34 @@ const Projects = () => {
                               {project.name}
                             </a>
                           </h3>
-                          <div className="flex gap-4 text-sm text-slate-400">
+                          <div className="flex gap-3 sm:gap-4 text-xs sm:text-sm text-slate-400">
                             {project.stars > 0 && (
                               <span className="flex items-center gap-1">
-                                <FaStar size={14} className="text-yellow-500" /> {project.stars}
+                                <FaStar size={12} className="text-yellow-500 sm:hidden" />
+                                <FaStar size={14} className="text-yellow-500 hidden sm:block" />
+                                {project.stars}
                               </span>
                             )}
                             {project.forks > 0 && (
                               <span className="flex items-center gap-1">
-                                <FaCodeBranch size={14} /> {project.forks}
+                                <FaCodeBranch size={12} className="sm:hidden" />
+                                <FaCodeBranch size={14} className="hidden sm:block" />
+                                {project.forks}
                               </span>
                             )}
                           </div>
                         </div>
 
                         {project.description && (
-                          <p className="text-sm text-slate-300 mb-3">{project.description}</p>
+                          <p className="text-xs sm:text-sm text-slate-300 mb-2 sm:mb-3">{project.description}</p>
                         )}
 
                         {/* Technologies/Languages */}
                         {project.languages && project.languages.length > 0 && (
-                          <div className="mb-3">
-                            <div className="flex flex-wrap gap-2">
+                          <div className="mb-2 sm:mb-3">
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
                               {project.languages.slice(0, 5).map((lang, i) => (
-                                <span key={i} className="text-xs px-2 py-1 bg-slate-700 rounded-full">
+                                <span key={i} className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 bg-slate-700 rounded-full">
                                   {lang.name} {lang.percentage}%
                                 </span>
                               ))}
@@ -313,18 +318,18 @@ const Projects = () => {
 
                         {/* Topics */}
                         {project.topics && project.topics.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-3">
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
                             {project.topics.map((topic, i) => (
-                              <span key={i} className="text-xs px-2 py-1 bg-blue-900/30 text-blue-400 rounded-full">
+                              <span key={i} className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 bg-blue-900/30 text-blue-400 rounded-full">
                                 #{topic}
                               </span>
                             ))}
                           </div>
                         )}
 
-                        <div className="flex justify-between items-center text-xs text-slate-400">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-[10px] sm:text-xs text-slate-400">
                           <span>Updated: {new Date(project.updatedAt).toLocaleDateString()}</span>
-                          <div className="flex gap-3">
+                          <div className="flex gap-2 sm:gap-3">
                             {project.homepage && (
                               <a
                                 href={project.homepage}
@@ -348,17 +353,17 @@ const Projects = () => {
                       </div>
                     ))
                   ) : (
-                    <p className="text-center text-slate-400">No projects found.</p>
+                    <p className="text-center text-slate-400 text-sm">No projects found.</p>
                   )}
                 </div>
               )}
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-gray-800 flex justify-end">
+            <div className="p-3 sm:p-4 border-t border-gray-800 flex justify-end">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                className="px-4 sm:px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm"
               >
                 Close
               </button>

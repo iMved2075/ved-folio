@@ -157,30 +157,31 @@ const Certifications = () => {
       {/* PDF Viewer Modal */}
       {selectedPdf && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-sm p-2 sm:p-4"
           onClick={handleBackdropClick}
           role="dialog"
           aria-modal="true"
         >
           <div
-            className="bg-gray-900 rounded-lg max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col shadow-2xl border border-gray-800"
+            className="bg-gray-900 rounded-lg max-w-full sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col shadow-2xl border border-gray-800"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex justify-between items-center p-4 border-b border-gray-800 bg-gray-800/50">
-              <div className="flex items-center gap-3">
-                <FaFilePdf className="text-red-500 text-2xl" />
-                <div>
-                  <h3 className="text-xl font-bold">{selectedPdf.title}</h3>
-                  <p className="text-sm text-slate-400">{selectedPdf.issuer} • {selectedPdf.date}</p>
+            <div className="flex justify-between items-center p-3 sm:p-4 border-b border-gray-800 bg-gray-800/50">
+              <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                <FaFilePdf className="text-red-500 text-lg sm:text-2xl flex-shrink-0" />
+                <div className="min-w-0">
+                  <h3 className="text-sm sm:text-lg lg:text-xl font-bold truncate">{selectedPdf.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-400 truncate">{selectedPdf.issuer} • {selectedPdf.date}</p>
                 </div>
               </div>
               <button
                 onClick={handleCloseModal}
-                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-lg"
+                className="text-gray-400 hover:text-white transition-colors p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg flex-shrink-0"
                 aria-label="Close modal"
               >
-                <FaTimes size={24} />
+                <FaTimes size={20} className="sm:hidden" />
+                <FaTimes size={24} className="hidden sm:block" />
               </button>
             </div>
 
@@ -188,32 +189,33 @@ const Certifications = () => {
             <div className="flex-1 overflow-auto bg-gray-800">
               <iframe
                 src={selectedPdf.file}
-                className="w-full h-full min-h-[70vh]"
+                className="w-full h-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh]"
                 title={selectedPdf.title}
               />
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-gray-800 bg-gray-800/50 flex justify-between items-center">
-              <div className="flex gap-3">
+            <div className="p-3 sm:p-4 border-t border-gray-800 bg-gray-800/50 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                 <button
                   onClick={() => handleDownload(selectedPdf)}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
                 >
                   <FaDownload size={14} />
-                  Download PDF
+                  <span className="sm:inline">Download PDF</span>
                 </button>
                 <button
                   onClick={() => handleOpenNewTab(selectedPdf.file)}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm"
                 >
                   <FaExternalLinkAlt size={14} />
-                  Open in New Tab
+                  <span className="hidden sm:inline">Open in New Tab</span>
+                  <span className="sm:hidden">Open</span>
                 </button>
               </div>
               <button
                 onClick={handleCloseModal}
-                className="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                className="px-4 sm:px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm"
               >
                 Close
               </button>
