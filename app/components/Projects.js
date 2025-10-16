@@ -117,11 +117,11 @@ const Projects = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Featured Projects</h2>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+        <h2 className="text-lg sm:text-xl font-semibold">Featured Projects</h2>
         <button
           onClick={handleShowAll}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg transition-colors"
+          className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm rounded-lg transition-colors whitespace-nowrap"
         >
           Show All Projects
         </button>
@@ -130,25 +130,25 @@ const Projects = () => {
       {/* Featured Projects */}
       <ul className="space-y-6">
         {featuredProjects.map((project, index) => (
-          <li key={index} className="bg-gray-800 p-4 rounded-lg shadow-md">
-            <div className='flex justify-between'>
+          <li key={index} className="bg-gray-800 p-3 sm:p-4 rounded-lg shadow-md">
+            <div className='flex flex-col sm:flex-row justify-between gap-2 sm:gap-0'>
               <Link href={project.live} target="_blank" className="flex items-center gap-3">
                 <Image
                   src={!project.logo ? '/vercel.svg' : project.logo}
                   alt={`${project.title} Logo`}
                   width={40}
                   height={40}
-                  className="h-10 w-10 rounded object-contain"
+                  className="h-8 w-8 sm:h-10 sm:w-10 rounded object-contain"
                   unoptimized
                 />
-                <h3 className="text-lg font-bold mb-2">{project.title}</h3>
+                <h3 className="text-base sm:text-lg font-bold mb-0 sm:mb-2">{project.title}</h3>
               </Link>
-              <Link href={project.github} target="_blank" className="text-sm text-blue-500 hover:underline">
+              <Link href={project.github} target="_blank" className="text-xs sm:text-sm text-blue-500 hover:underline self-start sm:self-center">
                 View Code
               </Link>
             </div>
-            <hr className="border-slate-700 mb-2" />
-            <p className="text-sm text-gray-300 mb-3">{project.description}</p>
+            <hr className="border-slate-700 my-2" />
+            <p className="text-xs sm:text-sm text-gray-300 mb-3">{project.description}</p>
             
             {/* Live Preview Toggle */}
             <div className="mb-3">

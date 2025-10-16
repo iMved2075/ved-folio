@@ -6,23 +6,28 @@ import { FiGlobe } from "react-icons/fi";
 const Hero = () => {
   return (
     <>
-      <div className='flex flex-col bg-[url(/bg1.jpg)] bg-cover bg-center h-[70vh] w-full font-bold text-blue-100 rounded-lg shadow-lg'>
-        <div className='bg-green-950/50 backdrop-blur-none p-10 h-full rounded-lg'>
+      <div className='flex flex-col bg-[url(/bg1.jpg)] bg-cover bg-center min-h-[50vh] md:h-[70vh] w-full font-bold text-blue-100 rounded-lg shadow-lg'>
+        <div className='bg-green-950/50 backdrop-blur-none p-4 sm:p-6 md:p-10 h-full rounded-lg'>
           <hr className='text-emerald-500'/>
-          <span className='text-2xl font-bold flex items-center gap-2'><FiGlobe /> <Typewriter words={['HELLO WORLD']} loop={1} cursor cursorStyle='!' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} /></span>
+          <span className='text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2'>
+            <FiGlobe /> 
+            <Typewriter words={['HELLO WORLD']} loop={1} cursor cursorStyle='!' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
+          </span>
           <hr className='text-emerald-500'/>
-          <div className='text-4xl py-8'>
+          <div className='text-2xl sm:text-3xl md:text-4xl py-4 md:py-8'>
             <Typewriter words={["Hey! I'm Vedprakash 👋"]} loop={1} cursor cursorStyle='.' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
           </div>
-          <Typewriter words={['I love coding', 'I am a fullstack web developer']} loop={0} cursor cursorStyle='.' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
-          <div className='pt-5'>Welcome to my portfolio website!</div>
-          <div className='flex justify-between py-10'>
-            <div className='w-[30%] bg-white/10 backdrop-blur-md p-5 rounded-lg'>
-              <span>I am a passionate developer with experience in building web applications using modern technologies.</span>
+          <div className='text-sm sm:text-base md:text-lg'>
+            <Typewriter words={['I love coding', 'I am a fullstack web developer']} loop={0} cursor cursorStyle='.' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
+          </div>
+          <div className='pt-3 md:pt-5 text-sm md:text-base'>Welcome to my portfolio website!</div>
+          <div className='flex flex-col md:flex-row justify-between gap-4 py-6 md:py-10'>
+            <div className='w-full md:w-[48%] lg:w-[30%] bg-white/10 backdrop-blur-md p-4 md:p-5 rounded-lg'>
+              <span className='text-xs sm:text-sm'>I am a passionate developer with experience in building web applications using modern technologies.</span>
             </div>
-            <div className='w-[30%] bg-white/10 backdrop-blur-md p-5 rounded-lg'>
-              <span>Feel free to explore my projects and skills showcased here.</span>
-              <span>Let&apos;s connect and create something amazing together!</span>
+            <div className='w-full md:w-[48%] lg:w-[30%] bg-white/10 backdrop-blur-md p-4 md:p-5 rounded-lg'>
+              <span className='text-xs sm:text-sm block mb-2'>Feel free to explore my projects and skills showcased here.</span>
+              <span className='text-xs sm:text-sm'>Let&apos;s connect and create something amazing together!</span>
             </div>
           </div>
         </div>
