@@ -32,7 +32,7 @@ const Contact = dynamic(() => import("./components/Contact"), {
 
 export default function Home() {
   return (
-    <div className="bg-slate-950 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 py-6 md:py-10">
+    <div className="bg-background text-foreground px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 py-6 md:py-10 min-h-screen">
       <Navbar />
       <main className="flex flex-col gap-6 md:gap-8 items-center sm:items-start min-h-screen">
         <Section id="home" title="Welcome">

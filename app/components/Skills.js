@@ -76,8 +76,8 @@ const Skills = () => {
   }, [])
 
   return (
-    <div className="w-full">
-      <p className="text-sm text-slate-300 mb-3">Technologies I use.</p>
+    <div className="w-full text-foreground">
+      <p className="text-sm opacity-80 mb-3">Technologies I use.</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {categories.map((category, i) => (
@@ -86,7 +86,7 @@ const Skills = () => {
             ref={(el) => (sectionRefs.current[i] = el)}
             data-index={i}
             style={{ transitionDelay: `${i * 100}ms` }}
-            className={`relative rounded-lg border border-slate-800 bg-slate-900/40 p-4 transition-all duration-700 ease-out overflow-hidden ${
+            className={`relative rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 p-4 transition-all duration-700 ease-out overflow-hidden ${
               visible[i] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
@@ -99,7 +99,7 @@ const Skills = () => {
                 {category.skills.map((skill, j) => (
                   <li key={skill.name} className="group">
                     <span
-                      className="inline-flex items-center gap-2 rounded-md bg-slate-800 px-3 py-1 text-xs text-slate-100 hover:bg-slate-700 transition transform hover:-translate-y-[1px] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                      className="inline-flex items-center gap-2 rounded-md bg-[color:var(--color-background)]/25 px-3 py-1 text-xs text-foreground hover:bg-[color:var(--color-background)]/35 transition transform hover:-translate-y-[1px] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)]"
                       aria-label={skill.name}
                     >
                       {skill.Icon && <skill.Icon size={14} className="opacity-90 transition-transform duration-300 group-hover:rotate-6" />}

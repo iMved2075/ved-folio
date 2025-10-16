@@ -1,32 +1,70 @@
 @import "tailwindcss";
 
 :root {
+  /* default to light theme */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --accent: #22c55e; /* green */
+  --border: #e5e7eb; /* gray-200 */
+  --overlay: rgba(255, 255, 255, 0.5);
+  --gradient-opacity: 0.06;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #000000;
+  --accent: #22c55e; /* green */
+  --border: #e5e7eb;
+  --overlay: rgba(255, 255, 255, 0.5);
+  --gradient-opacity: 0.06;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --accent: #10b981; /* emerald-500 */
+  --border: #1f2937; /* gray-800 */
+  --overlay: rgba(0, 0, 0, 0.5);
+  --gradient-opacity: 0.12;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
+  --opacity-gradient: var(--gradient-opacity);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Enable class-based dark mode variant using the `.dark` class on <html> */
-/* removed dark class variant */
+/* Class-based theming via `.light` / `.dark` on <html> */
 
 @utility no-scrollbar {
   @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* We manage theme with classes, not media query */
 
 body {
-  accent-color: #22d3ee;
-  color: #c8d5ff;
+  accent-color: var(--color-accent);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  transition: color 200ms ease, background-color 200ms ease;
+}
+
+/* Smooth theme transitions across UI when switching */
+.theme-animating,
+.theme-animating * {
+  transition-property: color, background-color, border-color, fill, stroke, box-shadow;
+  transition-duration: 280ms;
+  transition-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-animating,
+  .theme-animating * {
+    transition: none !important;
+  }
 }

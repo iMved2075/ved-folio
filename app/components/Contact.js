@@ -75,12 +75,12 @@ const Contact = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full text-foreground">
       {status && (
         <div
           className={`mb-3 rounded-md border p-3 text-sm ${
             status.type === 'success'
-              ? 'border-emerald-700 bg-emerald-900/30 text-emerald-200'
+              ? 'border-[color:var(--color-accent)] bg-[color:var(--color-accent)]/15 text-foreground'
               : 'border-red-700 bg-red-900/30 text-red-200'
           }`}
         >
@@ -89,39 +89,39 @@ const Contact = () => {
       )}
       <form onSubmit={handleSubmit} noValidate className="grid grid-cols-1 gap-3">
         <div>
-          <label htmlFor="name" className="block text-xs text-slate-300 mb-1">Name</label>
+          <label htmlFor="name" className="block text-xs opacity-70 mb-1">Name</label>
           <input
             id="name"
             name="name"
             value={form.name}
             onChange={handleChange}
-            className="w-full rounded-md border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-white outline-none focus:border-teal-500"
+            className="w-full rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 px-3 py-2 text-sm text-foreground outline-none focus:border-[color:var(--color-accent)]"
             placeholder="Your name"
           />
           {errors.name && <p className="mt-1 text-[11px] text-red-400">{errors.name}</p>}
         </div>
         <div>
-          <label htmlFor="email" className="block text-xs text-slate-300 mb-1">Email</label>
+          <label htmlFor="email" className="block text-xs opacity-70 mb-1">Email</label>
           <input
             id="email"
             name="email"
             type="email"
             value={form.email}
             onChange={handleChange}
-            className="w-full rounded-md border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-white outline-none focus:border-teal-500"
+            className="w-full rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 px-3 py-2 text-sm text-foreground outline-none focus:border-[color:var(--color-accent)]"
             placeholder="you@example.com"
           />
           {errors.email && <p className="mt-1 text-[11px] text-red-400">{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="message" className="block text-xs text-slate-300 mb-1">Message</label>
+          <label htmlFor="message" className="block text-xs opacity-70 mb-1">Message</label>
           <textarea
             id="message"
             name="message"
             rows={4}
             value={form.message}
             onChange={handleChange}
-            className="w-full rounded-md border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-white outline-none focus:border-teal-500"
+            className="w-full rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 px-3 py-2 text-sm text-foreground outline-none focus:border-[color:var(--color-accent)]"
             placeholder="How can I help you?"
           />
           {errors.message && <p className="mt-1 text-[11px] text-red-400">{errors.message}</p>}
@@ -130,7 +130,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center gap-2 rounded-md bg-teal-600/90 hover:bg-teal-500 px-3 py-2 text-xs font-medium text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-md bg-[color:var(--color-accent)] hover:opacity-90 px-3 py-2 text-xs font-medium text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)]/60 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isSubmitting ? (
               <>

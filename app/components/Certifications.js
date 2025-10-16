@@ -70,12 +70,12 @@ const Certifications = () => {
   };
 
   return (
-    <div className="certifications-section">
+    <div className="certifications-section text-foreground">
       <div className="flex items-center gap-3 mb-8">
         <FaAward size={28} className="text-yellow-500" />
         <div>
           <h2 className="text-2xl font-bold">Professional Certifications</h2>
-          <p className="text-sm text-slate-400">Industry-recognized credentials and achievements</p>
+          <p className="text-sm opacity-70">Industry-recognized credentials and achievements</p>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ const Certifications = () => {
           return (
             <div
               key={cert.id}
-              className="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20"
+              className="group relative bg-[color:var(--color-background)]/40 rounded-xl p-6 border border-[color:var(--color-border)] hover:border-[color:var(--color-accent)] transition-all duration-300 hover:shadow-xl hover:shadow-[color:var(--color-accent)]/20"
             >
               {/* Icon Header */}
               <div className={`absolute top-0 left-0 right-0 h-32 bg-gradient-to-br ${cert.color} rounded-t-xl opacity-20`}></div>
@@ -95,20 +95,20 @@ const Certifications = () => {
                   <div className={`p-3 bg-gradient-to-br ${cert.color} rounded-lg`}>
                     <IconComponent size={32} className="text-white" />
                   </div>
-                  <span className="text-xs px-3 py-1 bg-gray-700 rounded-full text-slate-300">
+                  <span className="text-xs px-3 py-1 bg-[color:var(--color-background)]/30 rounded-full opacity-80">
                     {cert.date}
                   </span>
                 </div>
 
                 {/* Certificate Info */}
-                <h3 className="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-lg font-bold mb-2 group-hover:text-[color:var(--color-accent)] transition-colors">
                   {cert.title}
                 </h3>
-                <p className="text-sm text-slate-400 mb-1 flex items-center gap-2">
+                <p className="text-sm opacity-70 mb-1 flex items-center gap-2">
                   <SiVercel size={14} />
                   {cert.issuer}
                 </p>
-                <p className="text-xs text-slate-500 mb-4 line-clamp-2">{cert.description}</p>
+                <p className="text-xs opacity-60 mb-4 line-clamp-2">{cert.description}</p>
 
                 {/* Skills */}
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -123,21 +123,21 @@ const Certifications = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleViewPdf(cert)}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-sm font-medium"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-[color:var(--color-accent)] hover:opacity-90 rounded-lg transition-colors text-sm font-medium text-white"
                   >
                     <FaEye size={14} />
                     View
                   </button>
                   <button
                     onClick={() => handleOpenNewTab(cert.file)}
-                    className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+                    className="px-4 py-2 bg-[color:var(--color-background)]/30 hover:bg-[color:var(--color-background)]/40 rounded-lg transition-colors"
                     title="Open in new tab"
                   >
                     <FaExternalLinkAlt size={14} />
                   </button>
                   <button
                     onClick={() => handleDownload(cert)}
-                    className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+                    className="px-4 py-2 bg-[color:var(--color-background)]/30 hover:bg-[color:var(--color-background)]/40 rounded-lg transition-colors"
                     title="Download"
                   >
                     <FaDownload size={14} />

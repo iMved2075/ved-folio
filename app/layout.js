@@ -27,10 +27,28 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="no-scrollbar">
+    <html lang="en" className="no-scrollbar light" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       <body
         className= {`${geistMono.className}`}
       >
+        {/* Set initial theme before React loads to avoid FOUC */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              var stored = localStorage.getItem('theme');
+              var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+              var theme = stored || (prefersDark ? 'dark' : 'light');
+              var html = document.documentElement;
+              html.classList.remove('light','dark');
+              html.classList.add(theme);
+              var meta = document.querySelector('meta[name="theme-color"]');
+              if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#ffffff');
+            } catch (e) {}
+          })();
+        `}} />
         {/* Plausible Analytics */}
         <script defer data-domain="example.com" src="https://plausible.io/js/script.js"></script>
         {children}

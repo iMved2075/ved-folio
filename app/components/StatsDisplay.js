@@ -23,23 +23,23 @@ export default function StatsDisplay() {
 
   if (loading) {
     return (
-      <div className="github-stats w-full h-[69vh] rounded-lg border border-slate-800 bg-slate-900/40 p-6">
+      <div className="github-stats w-full h-[69vh] rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 p-6 text-foreground">
         {/* Header Skeleton */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
             <FaGithub size={28} />
             GitHub Activity
           </h2>
-          <div className="h-4 w-40 bg-slate-700 rounded animate-pulse"></div>
+          <div className="h-4 w-40 bg-[color:var(--color-background)]/30 rounded animate-pulse"></div>
         </div>
 
         {/* Main Stats Grid Skeleton */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-1">
           {[...Array(4)].map((_, index) => (
-            <div key={index} className="stat-card flex flex-col items-center p-4 rounded-lg bg-white/10">
-              <div className="w-5 h-5 bg-slate-700 rounded animate-pulse mb-2"></div>
-              <div className="h-8 w-16 bg-slate-700 rounded animate-pulse mb-2"></div>
-              <div className="h-3 w-20 bg-slate-700 rounded animate-pulse"></div>
+            <div key={index} className="stat-card flex flex-col items-center p-4 rounded-lg bg-[color:var(--color-foreground)]/20">
+              <div className="w-5 h-5 bg-[color:var(--color-background)]/30 rounded animate-pulse mb-2"></div>
+              <div className="h-8 w-16 bg-[color:var(--color-background)]/30 rounded animate-pulse mb-2"></div>
+              <div className="h-3 w-20 bg-[color:var(--color-background)]/30 rounded animate-pulse"></div>
             </div>
           ))}
         </div>
@@ -64,7 +64,7 @@ export default function StatsDisplay() {
   console.log(stats);
 
   return (
-    <div className="github-stats w-full rounded-lg border border-slate-800 bg-slate-900/40 p-6">
+      <div className="github-stats w-full rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 p-6 text-foreground">
       {/* Header Section */}
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
@@ -78,7 +78,7 @@ export default function StatsDisplay() {
 
       {/* Main Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-1">
-        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-white/10">
+        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-[color:var(--color-foreground)]/10">
           <div className="flex items-center gap-2 mb-2">
             <RiGitRepositoryLine size={20} className="opacity-70" />
           </div>
@@ -86,7 +86,7 @@ export default function StatsDisplay() {
           <div className="text-xs text-center opacity-70">Repositories</div>
         </div>
 
-        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-white/10">
+        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-[color:var(--color-foreground)]/10">
           <div className="flex items-center gap-2 mb-2">
             <BiGitCommit size={20} className="opacity-70" />
           </div>
@@ -94,7 +94,7 @@ export default function StatsDisplay() {
           <div className="text-xs text-center opacity-70">Total Commits</div>
         </div>
 
-        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-white/10">
+        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-[color:var(--color-foreground)]/10">
           <div className="flex items-center gap-2 mb-2">
             <LuGitCommitVertical size={20} className="opacity-70" />
           </div>
@@ -102,7 +102,7 @@ export default function StatsDisplay() {
           <div className="text-xs text-center opacity-70">Contributions (2024)</div>
         </div>
 
-        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-white/10">
+        <div className="stat-card flex flex-col items-center p-4 rounded-lg bg-opacity-10 bg-[color:var(--color-foreground)]/10">
           <div className="flex items-center gap-2 mb-2">
             <MdPeopleAlt size={20} className="opacity-70" />
           </div>
@@ -126,7 +126,7 @@ export default function StatsDisplay() {
 
       {/* Language Usage by Bytes */}
       {stats.topLanguagesByBytes && stats.topLanguagesByBytes.length > 0 && (
-        <div className="rounded-lg bg-opacity-10 bg-white/10 p-4">
+        <div className="rounded-lg bg-[color:var(--color-background)]/20 p-4">
           <h3 className="text-lg font-semibold mb-3">📊 Language Distribution</h3>
           <div className="space-y-3">
             {stats.topLanguagesByBytes.map((lang, index) => (
@@ -135,7 +135,7 @@ export default function StatsDisplay() {
                   <span className="font-medium">{lang.language}</span>
                   <span className="text-sm opacity-70">{lang.percentage}%</span>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-2">
+                <div className="w-full bg-[color:var(--color-background)]/30 rounded-full h-2">
                   <div
                     className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
                     style={{ width: `${lang.percentage}%` }}

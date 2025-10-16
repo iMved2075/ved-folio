@@ -117,11 +117,11 @@ const Projects = () => {
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 text-foreground">
         <h2 className="text-lg sm:text-xl font-semibold">Featured Projects</h2>
         <button
           onClick={handleShowAll}
-          className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm rounded-lg transition-colors whitespace-nowrap"
+          className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[color:var(--color-accent)] hover:opacity-90 text-white text-xs sm:text-sm rounded-lg transition-colors whitespace-nowrap"
         >
           Show All Projects
         </button>
@@ -130,7 +130,7 @@ const Projects = () => {
       {/* Featured Projects */}
       <ul className="space-y-6">
         {featuredProjects.map((project, index) => (
-          <li key={index} className="bg-gray-800 p-3 sm:p-4 rounded-lg shadow-md">
+          <li key={index} className="border border-[color:var(--color-border)] bg-[color:var(--color-background)]/40 p-3 sm:p-4 rounded-lg shadow-md text-foreground">
             <div className='flex flex-col sm:flex-row justify-between gap-2 sm:gap-0'>
               <Link href={project.live} target="_blank" className="flex items-center gap-3">
                 <Image
@@ -143,12 +143,12 @@ const Projects = () => {
                 />
                 <h3 className="text-base sm:text-lg font-bold mb-0 sm:mb-2">{project.title}</h3>
               </Link>
-              <Link href={project.github} target="_blank" className="text-xs sm:text-sm text-blue-500 hover:underline self-start sm:self-center">
+              <Link href={project.github} target="_blank" className="text-xs sm:text-sm text-[color:var(--color-accent)] hover:underline self-start sm:self-center">
                 View Code
               </Link>
             </div>
-            <hr className="border-slate-700 my-2" />
-            <p className="text-xs sm:text-sm text-gray-300 mb-3">{project.description}</p>
+            <hr className="border-[color:var(--color-border)] my-2" />
+            <p className="text-xs sm:text-sm opacity-80 mb-3">{project.description}</p>
             
             {/* Live Preview Toggle */}
             <div className="mb-3">
@@ -162,13 +162,13 @@ const Projects = () => {
 
             {/* Collapsible Iframe */}
             {showIframe[index] && (
-              <div className="relative mb-4 rounded-lg overflow-hidden border border-slate-700 bg-slate-900">
+              <div className="relative mb-4 rounded-lg overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-background)]">
                 {/* Loading State */}
                 {iframeLoading[index] !== false && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-slate-900/90 z-10">
+                  <div className="absolute inset-0 flex items-center justify-center bg-[color:var(--color-background)]/90 z-10">
                     <div className="text-center">
-                      <div className="inline-block w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-                      <p className="text-sm text-slate-400">Loading preview...</p>
+                      <div className="inline-block w-12 h-12 border-4 border-[color:var(--color-accent)] border-t-transparent rounded-full animate-spin mb-3"></div>
+                      <p className="text-sm opacity-70">Loading preview...</p>
                     </div>
                   </div>
                 )}
@@ -181,13 +181,13 @@ const Projects = () => {
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <span className="text-xs text-slate-400 ml-3 truncate max-w-[200px]">{project.live}</span>
+                    <span className="text-xs opacity-70 ml-3 truncate max-w-[200px]">{project.live}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Link
                       href={project.live}
                       target="_blank"
-                      className="text-xs px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
+                      className="text-xs px-3 py-1 bg-[color:var(--color-accent)] hover:opacity-90 text-white rounded transition-colors"
                     >
                       Open Full →
                     </Link>
@@ -211,7 +211,7 @@ const Projects = () => {
               {project.technologies.map((technology) => (
                 <li key={technology.name} className="group">
                   <span
-                    className="inline-flex items-center gap-2 rounded-md bg-slate-700 px-3 py-1 text-xs text-slate-100 hover:bg-slate-700 transition transform hover:-translate-y-[1px] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                    className="inline-flex items-center gap-2 rounded-md bg-[color:var(--color-background)]/25 px-3 py-1 text-xs text-foreground hover:bg-[color:var(--color-background)]/35 transition transform hover:-translate-y-[1px] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)]"
                     aria-label={technology.name}
                   >
                     {technology.Icon && <technology.Icon size={14} className="opacity-90 transition-transform duration-300 group-hover:rotate-6" />}

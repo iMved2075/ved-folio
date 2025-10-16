@@ -1,12 +1,39 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Typewriter } from 'react-simple-typewriter'
 import { FaFilePdf } from 'react-icons/fa'
 import ResumeModal from './ResumeModal'
 
 const Navbar = () => {
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState(() => {
+        try {
+            if (typeof document !== 'undefined') {
+                const html = document.documentElement
+                if (html.classList.contains('dark')) return 'dark'
+                const stored = localStorage.getItem('theme')
+                if (stored === 'light' || stored === 'dark') return stored
+            }
+        } catch {}
+        return 'light'
+    });
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => {
+        try {
+            const stored = localStorage.getItem('theme');
+            if (stored) setTheme(stored);
+        } catch {}
+    }, []);
+
+    useEffect(() => {
+        if (typeof document !== 'undefined') {
+            const html = document.documentElement;
+            html.classList.remove('light','dark');
+            html.classList.add(theme);
+            try { localStorage.setItem('theme', theme); } catch {}
+        }
+    }, [theme]);
+    useEffect(() => { setMounted(true) }, [])
     const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
     
     return (
@@ -34,12 +61,37 @@ const Navbar = () => {
                         <span className="hidden sm:inline">View Resume</span>
                     </button>
                     <button
-                        className={`flex items-center rounded-full transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-200' : 'bg-gray-700'}`}
-                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        aria-label="Toggle theme"
+                        suppressHydrationWarning
+                        className={`flex items-center rounded-full gap-2 transition-colors duration-300 border border-[color:var(--color-border)] bg-[color:var(--color-background)] text-[color:var(--color-foreground)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--color-background)]`}
+                        onClick={() => {
+                            
+                            try {
+                                document.documentElement.classList.add('theme-animating');
+                                setTimeout(() => {
+                                    document.documentElement.classList.remove('theme-animating');
+                                }, 320);
+                            } catch {}
+                            setTheme(theme === 'dark' ? 'light' : 'dark')
+                        }}
+                        aria-label={mounted ? `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme` : 'Toggle theme'}
+                        aria-pressed={mounted ? theme === 'dark' : undefined}
+                        role="switch"
+                        aria-checked={mounted ? theme === 'dark' : undefined}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                try {
+                                    document.documentElement.classList.add('theme-animating');
+                                    setTimeout(() => {
+                                        document.documentElement.classList.remove('theme-animating');
+                                    }, 320);
+                                } catch {}
+                                setTheme(theme === 'dark' ? 'light' : 'dark');
+                            }
+                        }}
                     >
-                        <span className={`text-lg md:text-xl rounded-full transition-all duration-300 ${theme === 'dark' ? 'bg-emerald-500' : ''}`}>🌙</span>
-                        <span className={`text-lg md:text-xl rounded-full transition-all duration-300 ${theme === 'light' ? 'bg-emerald-500' : ''}`}>🌞</span>
+                        <span className={`rounded-full transition-all duration-300 ${mounted && theme === 'dark' ? 'text-[color:var(--color-accent)] bg-green-400' : ''}`}>🌙</span>
+                        <span className={`rounded-full transition-all duration-300 ${mounted && theme === 'light' ? 'text-[color:var(--color-accent)] bg-green-400' : ''}`}>🌞</span>
                     </button>
                 </div>
             </div>

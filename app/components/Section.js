@@ -58,20 +58,22 @@ const Section = ({ id, title, children }) => {
           isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
         }`}>
           <div className="flex items-center gap-3">
-            <h2 className="text-xl font-semibold text-white">{title}</h2>
+            <h2 className="text-xl font-semibold text-foreground">{title}</h2>
             <div className={`h-[1px] flex-1 bg-gradient-to-r ${gradient} opacity-60 transition-all duration-1000 delay-300 ${
               isVisible ? 'scale-x-100' : 'scale-x-0'
             } origin-left`} />
           </div>
         </div>
       )}
-      <div className={`relative rounded-lg border border-slate-800 bg-slate-900/40 p-4 overflow-hidden transition-all duration-700 delay-200 ${
+      <div className={`relative rounded-lg border border-slate-800 bg-[color:var(--color-background)]/40 p-4 overflow-hidden transition-all duration-700 delay-200 ${
         isVisible 
           ? 'opacity-100 scale-100' 
           : 'opacity-0 scale-95'
       }`}>
+        {/* Theme overlay for readability */}
+        <div className="absolute inset-0 bg-[color:var(--color-overlay)] pointer-events-none" />
         {/* Gradient Background */}
-        <div className={`absolute top-0 left-0 right-0 h-32 bg-gradient-to-br ${gradient} opacity-10 blur-xl transition-opacity duration-1000 delay-500 ${
+        <div className={`absolute top-0 left-0 right-0 h-32 bg-gradient-to-br ${gradient} opacity-[var(--opacity-gradient)] blur-xl transition-opacity duration-1000 delay-500 ${
           isVisible ? 'opacity-10' : 'opacity-0'
         }`}></div>
         
