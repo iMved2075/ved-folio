@@ -1,5 +1,6 @@
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
+import OpenAIBot from "./components/OpenAIBot";
 
 const geistMono = Geist_Mono({ subsets: ["latin"]});
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
         {/* Plausible Analytics */}
         <script defer data-domain="example.com" src="https://plausible.io/js/script.js"></script>
         {children}
+        <OpenAIBot />
       </body>
     </html>
   );

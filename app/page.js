@@ -30,6 +30,8 @@ const Contact = dynamic(() => import("./components/Contact"), {
   loading: () => <div className="animate-pulse h-32 bg-slate-800 rounded-lg"></div>,
 });
 
+const OpenAIBot = dynamic(() => import("./components/OpenAIBot"));
+
 export default function Home() {
   return (
     <div className="bg-background text-foreground px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 py-6 md:py-10 min-h-screen">
@@ -60,6 +62,7 @@ export default function Home() {
         </Section>
       </main>
       <Footer />
+      <OpenAIBot />
     </div>
   );
 }

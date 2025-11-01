@@ -27,6 +27,20 @@ const Projects = () => {
 
   const featuredProjects = [
     {
+      title: "ved-folio",
+      description: "ved-folio is a personal portfolio website built with Next.js and Tailwind CSS. It features a clean and modern design, showcasing projects, skills, and contact information. The site is fully responsive and optimized for performance, providing an excellent user experience across all devices. With smooth animations and easy navigation, ved-folio serves as a professional online presence for developers and creatives.",
+      live: "https://ved-folio.vercel.app/",
+      github: "https://github.com/iMved2075/ved-folio",
+      technologies: [
+        { name: 'Next.js', Icon: SiNextdotjs },
+        { name: 'Tailwind CSS', Icon: SiTailwindcss },
+        { name: 'JavaScript', Icon: SiJavascript },
+        { name: 'React', Icon: SiReact },
+        { name: 'GitHub', Icon: SiGithub },
+        { name: 'Git', Icon: SiGit },
+      ]
+    },
+    {
       title: "GetMeFund",
       logo: "https://get-me-fund.vercel.app/coin_bounce.gif",
       description: "GetMeFund is a modern, open-source web app that allows creators to receive financial support from their fans. Built with Next.js, Stripe, and NextAuth, it offers a secure and seamless way for users to send and manage donations. Each creator gets a personalized page to showcase their work and accept contributions directly. The app features OAuth authentication (Google, GitHub, Facebook), a clean dashboard for tracking payments, and full Stripe webhook integration for real-time updates. With its elegant UI powered by Tailwind CSS and robust backend using MongoDB, GetMeFund is a simple yet powerful platform for creator monetization.",
