@@ -69,6 +69,7 @@ export default function OpenAIBot() {
                         {messages.length === 0 && (
                             <div className="text-slate-400 text-sm text-center mt-8">
                                 👋 Hi! Ask me anything about Ved&apos;s portfolio, skills, or projects!
+                                😢 Sorry for the inconvenience as we are currently in the process of purchasing tokens.
                             </div>
                         )}
                         {messages.map((msg, i) => (
@@ -100,7 +101,7 @@ export default function OpenAIBot() {
                         />
                         <button
                             onClick={sendMessage}
-                            disabled={loading || !input.trim()}
+                            disabled
                             className="bg-cyan-500 text-black px-3 py-2 rounded-lg hover:bg-cyan-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             ➤
